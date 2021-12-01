@@ -1,0 +1,9 @@
+# Binaries for programs and plugins
+main
+aoc-2021
+*.exe
+*.exe~
+*.so
+*.dylib
+*.dll
+vls.log
