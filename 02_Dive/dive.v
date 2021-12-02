@@ -1,7 +1,7 @@
 // dive.v
 module main
 
-import os
+import os { read_lines }
 
 struct Sub {
 mut:
@@ -52,6 +52,7 @@ fn main() {
 
 	answer1 := p1.horizontal * p1.depth
 	answer2 := p2.horizontal * p2.depth
+
 	println("Part1 answer: $answer1")
 	println("Part2 answer: $answer2")
 }
