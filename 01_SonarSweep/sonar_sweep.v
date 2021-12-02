@@ -1,7 +1,7 @@
 // sonar_sweep.v
 module main
 
-import os
+import os { read_lines }
 
 fn larger_sums(data []int) int {
 	mut answer := 0
@@ -18,20 +18,15 @@ fn larger_sums(data []int) int {
 
 fn main() {
 	file := os.read_lines("input.txt") or {
-		println(err)
-		exit(-1)
+		panic("[-] Failed to read input.txt: $err")
 	}
 
-	mut data := []int{}
+	mut data := []int{cap: 2000}
 	for line in file {
 		data << line.int()
 	}
 
-	res1 := larger_sums(data)
-
-	println("Part1 answer: $res1") 
-
-	mut sums := []int{}
+	mut sums := []int{cap: 2000}
 
 	for key, _ in data {
 		if key < data.len - 2 {
@@ -39,7 +34,9 @@ fn main() {
 		}
 	}
 
+	res1 := larger_sums(data)
 	res2 := larger_sums(sums)
 
+	println("Part1 answer: $res1") 
 	println("Part2 answer: $res2")
 }
