@@ -7,3 +7,4 @@ aoc-2021
 *.dylib
 *.dll
 vls.log
+.cookie
