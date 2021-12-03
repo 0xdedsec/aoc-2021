@@ -10,17 +10,6 @@ mut:
 	aim int
 }
 
-fn get_space_pos(line string) int {
-	mut pos := 0
-	for k,v in line {
-		if v == 32 {
-			pos = k
-			break
-		}
-	}
-	return pos
-}
-
 fn main() {
 	file := os.read_lines("input.txt") or {
 		panic("[-] Failed to read input.txt: $err")
@@ -30,9 +19,8 @@ fn main() {
 	mut p2 := Sub{0,0,0}
 
 	for line in file {
-		space_pos := get_space_pos(line)
-		direction := line[..space_pos]
-		mov := line[space_pos+1..].int()
+		direction := line.split(' ')[0]
+		mov := line.split(' ')[1].int()
 		match direction {
 			'forward' { 
 				p1.horizontal += mov
